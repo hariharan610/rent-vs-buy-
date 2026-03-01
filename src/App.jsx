@@ -152,6 +152,8 @@ function Slider({ label, value, onChange, min, max, step, format, suffix, info, 
           width: "100%", height: 6, appearance: "none", borderRadius: 3,
           background: `linear-gradient(to right, ${color} 0%, ${color} ${pct}%, #2a2d35 ${pct}%, #2a2d35 100%)`,
           cursor: "pointer", outline: "none",
+          "--thumb-color": color,
+          "--thumb-glow": `${color}80`,
         }}
       />
       <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
@@ -938,12 +940,12 @@ export default function RentVsBuyCalculator() {
         input[type="range"] { -webkit-appearance: none; appearance: none; }
         input[type="range"]::-webkit-slider-thumb {
           -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
-          background: #c8ff32; cursor: pointer; border: 2px solid #13151a;
-          box-shadow: 0 0 10px rgba(200,255,50,0.5);
+          background: var(--thumb-color, #c8ff32); cursor: pointer; border: 2px solid #13151a;
+          box-shadow: 0 0 10px var(--thumb-glow, rgba(200,255,50,0.5));
         }
         input[type="range"]::-moz-range-thumb {
           width: 18px; height: 18px; border-radius: 50%;
-          background: #c8ff32; cursor: pointer; border: 2px solid #13151a;
+          background: var(--thumb-color, #c8ff32); cursor: pointer; border: 2px solid #13151a;
         }
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-thumb { background: #2a2d35; border-radius: 2px; }
