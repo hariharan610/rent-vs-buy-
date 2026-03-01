@@ -1555,12 +1555,14 @@ export default function RentVsBuyCalculator() {
 
             {/* Year-by-Year Table */}
             <Card style={{ padding: 0, overflow: "hidden" }}>
-              <div style={{
-                fontSize: 12, fontFamily: "'Space Mono', monospace",
-                color: "#555", letterSpacing: "0.12em", textTransform: "uppercase",
-                padding: "16px 16px 10px",
-              }}>
-                Year-by-Year Net Wealth
+              <div style={{ padding: "16px 16px 10px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ fontSize: 12, fontFamily: "'Space Mono', monospace", color: "#555", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+                  Year-by-Year Net Wealth
+                </div>
+                <div style={{ display: "flex", gap: 12 }}>
+                  <span style={{ fontSize: 12, color: "#555" }}>🏠 Buy ahead</span>
+                  <span style={{ fontSize: 12, color: "#555" }}>💰 Rent ahead</span>
+                </div>
               </div>
               <div style={{ overflowX: "auto" }}>
                 <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
