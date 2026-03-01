@@ -3,14 +3,14 @@ import { useState, useMemo, useEffect, useRef } from "react";
 /* ─── DATA ─────────────────────────────────────────────────────────── */
 
 const CITIES = {
-  mumbai:    { name: "Mumbai",    avgRent: 35000, avgPrice: 15000000, appreciation: 4.5, rentIncrease: 7,  stampDuty: 6,   isMetro: true  },
-  delhi:     { name: "Delhi NCR", avgRent: 25000, avgPrice: 10000000, appreciation: 5.0, rentIncrease: 6,  stampDuty: 6,   isMetro: true  },
+  ahmedabad: { name: "Ahmedabad", avgRent: 14000, avgPrice:  5500000, appreciation: 5.0, rentIncrease: 5,  stampDuty: 4.9, isMetro: false },
   bangalore: { name: "Bengaluru", avgRent: 28000, avgPrice:  9500000, appreciation: 6.5, rentIncrease: 8,  stampDuty: 5.6, isMetro: true  },
   chennai:   { name: "Chennai",   avgRent: 18000, avgPrice:  7500000, appreciation: 5.0, rentIncrease: 6,  stampDuty: 7,   isMetro: true  },
+  delhi:     { name: "Delhi NCR", avgRent: 25000, avgPrice: 10000000, appreciation: 5.0, rentIncrease: 6,  stampDuty: 6,   isMetro: true  },
   hyderabad: { name: "Hyderabad", avgRent: 20000, avgPrice:  8000000, appreciation: 7.0, rentIncrease: 7,  stampDuty: 7.5, isMetro: false },
-  pune:      { name: "Pune",      avgRent: 20000, avgPrice:  8500000, appreciation: 5.5, rentIncrease: 6,  stampDuty: 6,   isMetro: false },
   kolkata:   { name: "Kolkata",   avgRent: 15000, avgPrice:  6000000, appreciation: 3.5, rentIncrease: 5,  stampDuty: 6,   isMetro: true  },
-  ahmedabad: { name: "Ahmedabad", avgRent: 14000, avgPrice:  5500000, appreciation: 5.0, rentIncrease: 5,  stampDuty: 4.9, isMetro: false },
+  mumbai:    { name: "Mumbai",    avgRent: 35000, avgPrice: 15000000, appreciation: 4.5, rentIncrease: 7,  stampDuty: 6,   isMetro: true  },
+  pune:      { name: "Pune",      avgRent: 20000, avgPrice:  8500000, appreciation: 5.5, rentIncrease: 6,  stampDuty: 6,   isMetro: false },
   custom:    { name: "Custom",    avgRent: 20000, avgPrice:  8000000, appreciation: 5.0, rentIncrease: 6,  stampDuty: 7,   isMetro: false },
 };
 
