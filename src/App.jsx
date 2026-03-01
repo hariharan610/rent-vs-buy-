@@ -745,19 +745,19 @@ function calculateRentThenBuy(params) {
 
 export default function RentVsBuyCalculator() {
   // Core inputs
-  const [city,            setCity]            = useState("mumbai");
-  const [propertyPrice,   setPropertyPrice]   = useState(CITIES.mumbai.avgPrice);
-  const [monthlyRent,     setMonthlyRent]     = useState(CITIES.mumbai.avgRent);
+  const [city,            setCity]            = useState("chennai");
+  const [propertyPrice,   setPropertyPrice]   = useState(CITIES.chennai.avgPrice);
+  const [monthlyRent,     setMonthlyRent]     = useState(CITIES.chennai.avgRent);
   const [downPaymentPct,  setDownPaymentPct]  = useState(20);
   const [loanRate,        setLoanRate]        = useState(8.5);
   const [loanTenure,      setLoanTenure]      = useState(20);
-  const [appreciation,    setAppreciation]    = useState(CITIES.mumbai.appreciation);
-  const [rentIncrease,    setRentIncrease]    = useState(CITIES.mumbai.rentIncrease);
+  const [appreciation,    setAppreciation]    = useState(CITIES.chennai.appreciation);
+  const [rentIncrease,    setRentIncrease]    = useState(CITIES.chennai.rentIncrease);
   const [maintenance,     setMaintenance]     = useState(5000);
   const [investReturn,    setInvestReturn]    = useState(12);
   const [horizon,         setHorizon]         = useState(10);
   const [taxBracket,      setTaxBracket]      = useState(30);
-  const [stampDutyPct,    setStampDutyPct]    = useState(CITIES.mumbai.stampDuty);
+  const [stampDutyPct,    setStampDutyPct]    = useState(CITIES.chennai.stampDuty);
   const [stampDutyCustom, setStampDutyCustom] = useState(false);
   const [forcedSavings,   setForcedSavings]   = useState(100);
   const [hraInputs,       setHraInputs]       = useState({ basicSalary: 0, hraReceived: 0, monthlyRentForHRA: 0 });
