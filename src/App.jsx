@@ -918,7 +918,7 @@ export default function RentVsBuyCalculator() {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-    setTimeout(() => tabRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
   };
 
   /* ── RTB winner label */
