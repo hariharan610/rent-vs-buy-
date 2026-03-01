@@ -1095,25 +1095,32 @@ export default function RentVsBuyCalculator() {
                     {stampDutyPct}%
                   </span>
                 </div>
-                <select
-                  value={stampDutyCustom ? "custom" : String(stampDutyPct)}
-                  onChange={e => {
-                    if (e.target.value === "custom") { setStampDutyCustom(true); }
-                    else { setStampDutyCustom(false); setStampDutyPct(Number(e.target.value)); }
-                  }}
-                  style={{
-                    width: "100%", padding: "9px 12px", background: "#13151a",
-                    border: "1px solid #2a2d35", borderRadius: 8, color: "#e8eaed",
-                    fontSize: 15, fontFamily: "'DM Sans', sans-serif", outline: "none",
-                    marginBottom: stampDutyCustom ? 8 : 0, cursor: "pointer",
-                  }}
-                >
-                  {STAMP_DUTY_OPTIONS.map(opt => (
-                    <option key={opt.label} value={opt.value === null ? "custom" : String(opt.value)}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
+                <div style={{ position: "relative" }}>
+                  <select
+                    value={stampDutyCustom ? "custom" : String(stampDutyPct)}
+                    onChange={e => {
+                      if (e.target.value === "custom") { setStampDutyCustom(true); }
+                      else { setStampDutyCustom(false); setStampDutyPct(Number(e.target.value)); }
+                    }}
+                    style={{
+                      width: "100%", padding: "9px 36px 9px 12px", background: "#13151a",
+                      border: "1px solid #2a2d35", borderRadius: 8, color: "#e8eaed",
+                      fontSize: 15, fontFamily: "'DM Sans', sans-serif", outline: "none",
+                      marginBottom: stampDutyCustom ? 8 : 0, cursor: "pointer",
+                      appearance: "none", WebkitAppearance: "none",
+                    }}
+                  >
+                    {STAMP_DUTY_OPTIONS.map(opt => (
+                      <option key={opt.label} value={opt.value === null ? "custom" : String(opt.value)}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </div>
                 {stampDutyCustom && (
                   <input
                     type="number" min={0} max={15} step={0.1} placeholder="Enter stamp duty %"
