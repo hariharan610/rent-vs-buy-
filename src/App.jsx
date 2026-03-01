@@ -972,7 +972,7 @@ export default function RentVsBuyCalculator() {
                 boxShadow: "0 0 14px rgba(200,255,50,0.8)",
               }} />
               <span style={{ fontSize: 13, fontFamily: "'Space Mono', monospace", color: "#c8ff32", letterSpacing: "0.15em" }}>
-                FINANCIAL CALCULATOR
+                HOME BUYING CALCULATOR
               </span>
             </div>
             <h1 style={{
@@ -1631,7 +1631,7 @@ export default function RentVsBuyCalculator() {
         textAlign: "center", fontSize: 12, color: "#555",
         fontFamily: "'Space Mono', monospace", lineHeight: 1.8,
       }}>
-        <div>Based on FY 2025–26 tax laws · Assumes old tax regime (80C + 24b deductions applicable)</div>
+        <div>For self-occupied residential homes only · FY 2025–26 tax laws · Old tax regime (80C + 24b applicable)</div>
         <div>For informational purposes only — not financial advice. Consult a qualified financial advisor.</div>
       </div>
     </div>
