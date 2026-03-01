@@ -802,7 +802,7 @@ export default function RentVsBuyCalculator() {
     if (p.ir) setInvestReturn(Number(p.ir));
     if (p.h)  setHorizon(Number(p.h));
     if (p.tb) setTaxBracket(Number(p.tb));
-    if (p.sd) { setStampDutyPct(Number(p.sd)); setStampDutyCustom(true); }
+    if (p.sd) { const sdVal = Number(p.sd); setStampDutyPct(sdVal); setStampDutyCustom(!STAMP_DUTY_OPTIONS.some(o => o.value === sdVal)); }
     if (p.fs) setForcedSavings(Number(p.fs));
     if (p.sy) setSwitchYear(Number(p.sy));
     if (p.rtb === "1") setRtbEnabled(true);
