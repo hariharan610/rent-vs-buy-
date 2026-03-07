@@ -26,6 +26,72 @@ const STAMP_DUTY_OPTIONS = [
   { label: "Custom",            value: null },
 ];
 
+const PROPERTY_TYPES = {
+  ahmedabad: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "2 BHK",          locality: "Naroda, Vastral, Odhav, Nikol, Narol, Vatva, New Ranip, Tragad",                                  size: "750–950 sq ft"   },
+    { maxPrice: 8000000,  label: "₹50L–₹80L",     type: "2 BHK",          locality: "South Bopal, Gota, Chandkheda, Shilaj, Shela, Ghuma, Motera, New CG Road",                        size: "950–1150 sq ft"  },
+    { maxPrice: 12000000, label: "₹80L–₹1.2Cr",   type: "3 BHK",          locality: "Satellite, Bodakdev, Vastrapur, Jodhpur, Prahladnagar, Gurukul, Navrangpura, Memnagar",           size: "1300–1600 sq ft" },
+    { maxPrice: 20000000, label: "₹1.2Cr–₹2Cr",   type: "3 BHK Premium",  locality: "Thaltej, Ambli, SG Highway, Bodakdev (premium), Satellite (premium), CG Road, Ellis Bridge",     size: "1600–2000 sq ft" },
+    { maxPrice: Infinity, label: "Above ₹2Cr",     type: "4 BHK / Villa",  locality: "Ambli, Thaltej (premium), Sindhu Bhavan Road, Science City Road, Shilaj",                        size: "2000+ sq ft"     },
+  ],
+  bangalore: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "1 BHK",          locality: "Electronic City, Hoskote, Anekal, Chandapura, Attibele, Bommasandra, Jigani, Bidadi, Nelamangala", size: "450–600 sq ft"  },
+    { maxPrice: 8000000,  label: "₹50L–₹80L",     type: "2 BHK",          locality: "Whitefield, Sarjapur Road, Thanisandra, Hennur, Begur, Hulimavu, Kengeri, Varthur, Harlur",       size: "850–1050 sq ft"  },
+    { maxPrice: 12000000, label: "₹80L–₹1.2Cr",   type: "2 BHK Premium",  locality: "HSR Layout, Marathahalli, Bellandur, Hebbal, Yelahanka, Rajajinagar, Banashankari, Basavanagudi", size: "1100–1350 sq ft" },
+    { maxPrice: 20000000, label: "₹1.2Cr–₹2Cr",   type: "3 BHK",          locality: "Indiranagar, Koramangala, JP Nagar, Jayanagar, Malleshwaram, Sadashivanagar, Frazer Town",        size: "1400–1800 sq ft" },
+    { maxPrice: Infinity, label: "Above ₹2Cr",     type: "4 BHK / Villa",  locality: "Lavelle Road, Vittal Mallya Road, Palace Road, Dollars Colony, HAL 2nd & 3rd Stage",             size: "2000+ sq ft"     },
+  ],
+  chennai: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "1 BHK",          locality: "Tambaram, Avadi, Chrompet, Poonamallee, Kundrathur, Guduvancheri, Kelambakkam, Ambattur",         size: "500–650 sq ft"   },
+    { maxPrice: 8000000,  label: "₹50L–₹80L",     type: "2 BHK",          locality: "OMR, Medavakkam, Perambur, Mogappair, Pallikaranai, Sholinganallur, Kolathur, Vengaivasal",       size: "850–1050 sq ft"  },
+    { maxPrice: 12000000, label: "₹80L–₹1.2Cr",   type: "2 BHK Premium",  locality: "Velachery, Anna Nagar, Thoraipakkam, Guindy, Thiruvanmiyur, Kilpauk, Ashok Nagar, Kodambakkam",  size: "1100–1350 sq ft" },
+    { maxPrice: 20000000, label: "₹1.2Cr–₹2Cr",   type: "3 BHK",          locality: "T. Nagar, Adyar, Nungambakkam, Mylapore, Besant Nagar, Alwarpet, KK Nagar, Teynampet",           size: "1400–1800 sq ft" },
+    { maxPrice: Infinity, label: "Above ₹2Cr",     type: "4 BHK / Villa",  locality: "Boat Club, Poes Garden, RA Puram, MRC Nagar, ECR (Injambakkam–Neelankarai), Gopalapuram",        size: "2000+ sq ft"     },
+  ],
+  delhi: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "1 BHK",          locality: "Greater Noida West, Bhiwadi, Noida Extension, Raj Nagar Ext. (Ghaziabad), Crossing Republik",    size: "500–650 sq ft"   },
+    { maxPrice: 8000000,  label: "₹50L–₹80L",     type: "2 BHK",          locality: "Noida Ext. (Sec 1–16), Faridabad (Sec 75–88), Greater Noida, Sohna Road, Yamuna Expressway",     size: "850–1050 sq ft"  },
+    { maxPrice: 12000000, label: "₹80L–₹1.2Cr",   type: "2 BHK Premium",  locality: "Noida Sec 75–150, New Gurgaon, Indirapuram, Vaishali, Dwarka (Sec 19–23), Rohini (Sec 24–37)",  size: "1100–1350 sq ft" },
+    { maxPrice: 20000000, label: "₹1.2Cr–₹2Cr",   type: "3 BHK",          locality: "Dwarka (Sec 1–12), Noida Sec 44–62, Sushant Lok, Vasant Kunj, Saket, Janakpuri, Pitampura",     size: "1400–1800 sq ft" },
+    { maxPrice: Infinity, label: "Above ₹2Cr",     type: "4 BHK / Villa",  locality: "Golf Course Road, DLF Phase 1–5, Greater Kailash, Defence Colony, Hauz Khas, Vasant Vihar",     size: "2000+ sq ft"     },
+  ],
+  hyderabad: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "1 BHK",          locality: "Uppal, LB Nagar, Ghatkesar, Kompally, Medchal, Shamshabad, Pocharam, Adibatla, Bolarum",         size: "500–650 sq ft"   },
+    { maxPrice: 8000000,  label: "₹50L–₹80L",     type: "2 BHK",          locality: "Miyapur, Kukatpally, Nizampet, Bachupally, Pragathi Nagar, Manikonda, Narsingi, Chandanagar",    size: "900–1100 sq ft"  },
+    { maxPrice: 12000000, label: "₹80L–₹1.2Cr",   type: "2 BHK Premium",  locality: "Gachibowli, Kondapur, Madhapur, HITEC City, Kokapet, Begumpet, Habsiguda, AS Rao Nagar",        size: "1100–1400 sq ft" },
+    { maxPrice: 20000000, label: "₹1.2Cr–₹2Cr",   type: "3 BHK",          locality: "Jubilee Hills, Banjara Hills, Film Nagar, Somajiguda, Khairatabad, Financial District, Attapur", size: "1500–1900 sq ft" },
+    { maxPrice: Infinity, label: "Above ₹2Cr",     type: "4 BHK / Villa",  locality: "Jubilee Hills (Road 36+), Banjara Hills, Gandipet, Mokila, Narsingi (villas)",                  size: "2000+ sq ft"     },
+  ],
+  kolkata: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "2 BHK",          locality: "Rajarhat, Barasat, Narendrapur, Sonarpur, Madhyamgram, Barrackpore, Joka, Behala outskirts",     size: "700–900 sq ft"   },
+    { maxPrice: 8000000,  label: "₹50L–₹80L",     type: "2 BHK",          locality: "New Town, Garia, Tollygunge, Kasba, Mukundapur, Keshtopur, Baguihati, Behala, Jadavpur",         size: "900–1100 sq ft"  },
+    { maxPrice: 12000000, label: "₹80L–₹1.2Cr",   type: "3 BHK",          locality: "Salt Lake (Sec 1–5), EM Bypass, Ruby, Jodhpur Park, Lake Gardens, Southern Avenue, Gariahat",   size: "1200–1500 sq ft" },
+    { maxPrice: 20000000, label: "₹1.2Cr–₹2Cr",   type: "3 BHK Premium",  locality: "Alipore, Ballygunge, Park Street, Camac Street, Elgin Road, Shakespeare Sarani, Hazra Road",    size: "1500–1900 sq ft" },
+    { maxPrice: Infinity, label: "Above ₹2Cr",     type: "4 BHK / Villa",  locality: "Alipore (premium), Ballygunge Circular Road, Rawdon Street, Theatre Road",                      size: "2000+ sq ft"     },
+  ],
+  mumbai: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "Studio / 1 RK",  locality: "Panvel, Taloja, Ulwe, Vasai-Virar, Bhiwandi, Badlapur, Ambernath, Karjat, Dombivli outskirts",  size: "250–400 sq ft"   },
+    { maxPrice: 8000000,  label: "₹50L–₹80L",     type: "1 BHK",          locality: "Thane (Bhiwandi Rd), Kalyan, Dombivli, Kharghar, Kamothe, Mira-Bhayandar, Virar, Nalasopara",  size: "400–550 sq ft"   },
+    { maxPrice: 12000000, label: "₹80L–₹1.2Cr",   type: "2 BHK",          locality: "Kandivali, Borivali, Malad East, Dahisar, Thane (Ghodbunder Rd), Mulund, Vikhroli, Bhandup",   size: "600–800 sq ft"   },
+    { maxPrice: 20000000, label: "₹1.2Cr–₹2Cr",   type: "2 BHK Premium",  locality: "Andheri East, Goregaon, Powai, Chembur, Wadala, Lower Parel, Matunga, Ghatkopar, Kurla",       size: "700–950 sq ft"   },
+    { maxPrice: Infinity, label: "Above ₹2Cr",     type: "3 BHK",          locality: "Andheri West, Bandra, Dadar, Prabhadevi, Worli, Juhu, Khar, Santacruz, Versova, Lokhandwala",  size: "1000+ sq ft"     },
+  ],
+  pune: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "1 BHK",          locality: "Wagholi, Talegaon, Chakan, Pirangut, Uruli Kanchan, Manjri, Lohegaon, Marunji, Alandi",         size: "450–600 sq ft"   },
+    { maxPrice: 8000000,  label: "₹50L–₹80L",     type: "2 BHK",          locality: "Hinjewadi, Kharadi, Undri, Hadapsar, Tathawade, Moshi, Ravet, Wakad outskirts, Dhayari",        size: "850–1050 sq ft"  },
+    { maxPrice: 12000000, label: "₹80L–₹1.2Cr",   type: "2 BHK Premium",  locality: "Baner, Wakad, Bavdhan, Kothrud, Aundh, Viman Nagar, Magarpatta, Kondhwa, NIBM Road",            size: "1100–1350 sq ft" },
+    { maxPrice: 20000000, label: "₹1.2Cr–₹2Cr",   type: "3 BHK",          locality: "Koregaon Park, Kalyani Nagar, Boat Club Road, Shivajinagar, Prabhat Road, Erandwane, SB Road",  size: "1400–1800 sq ft" },
+    { maxPrice: Infinity, label: "Above ₹2Cr",     type: "4 BHK / Villa",  locality: "Koregaon Park Annexe, Boat Club Road, Kalyani Nagar (premium), Lavasa, Baner hilltop",          size: "2000+ sq ft"     },
+  ],
+  custom: [
+    { maxPrice: 5000000,  label: "Under ₹50L",    type: "1 BHK",          locality: "Budget locality",             size: "500–650 sq ft"   },
+    { maxPrice: 10000000, label: "₹50L–₹1Cr",     type: "2 BHK",          locality: "Mid-range locality",          size: "850–1100 sq ft"  },
+    { maxPrice: 20000000, label: "₹1Cr–₹2Cr",     type: "2–3 BHK",        locality: "Established locality",        size: "1100–1500 sq ft" },
+    { maxPrice: 35000000, label: "₹2Cr–₹3.5Cr",   type: "3 BHK Premium",  locality: "Premium locality",            size: "1400–1800 sq ft" },
+    { maxPrice: Infinity, label: "Above ₹3.5Cr",  type: "4 BHK / Villa",  locality: "Premium / gated community",   size: "2000+ sq ft"     },
+  ],
+};
+
 const TOOLTIPS = {
   sec80c:      "Section 80C: deduct principal repaid on your home loan, up to ₹1.5L/year from taxable income. Shared with PF, ELSS, PPF etc.",
   sec24b:      "Section 24(b): deduct home loan interest up to ₹2L/year on a self-occupied property. Directly reduces tax payable.",
@@ -766,6 +832,13 @@ export default function RentVsBuyCalculator() {
   // Rent-then-buy
   const [rtbEnabled,      setRtbEnabled]      = useState(false);
   const [switchYear,      setSwitchYear]      = useState(5);
+  // Affordability module
+  const [module,           setModule]          = useState("rvb");
+  const [afActiveTab,      setAfActiveTab]      = useState("income");
+  const [afMonthlyIncome,  setAfMonthlyIncome]  = useState(100000);
+  const [afExistingEMIs,   setAfExistingEMIs]   = useState(0);
+  const [afCurrentRent,    setAfCurrentRent]    = useState(CITIES.chennai.avgRent);
+  const [afCurrentSavings, setAfCurrentSavings] = useState(0);
   // UI
   const [activeTab,       setActiveTab]       = useState("inputs");
   const [copied,          setCopied]          = useState(false);
@@ -784,6 +857,7 @@ export default function RentVsBuyCalculator() {
       setAppreciation(c.appreciation);
       setRentIncrease(c.rentIncrease);
       if (!stampDutyCustom) setStampDutyPct(c.stampDuty);
+      setAfCurrentRent(c.avgRent);
     }
   }, [city]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -888,6 +962,52 @@ export default function RentVsBuyCalculator() {
   // Count-up on the diff amount
   const animatedDiff = useCountUp(displayDiff, animKey);
 
+  // ── Affordability calculation
+  const AF = useMemo(() => {
+    const r = loanRate / 100 / 12;
+    const n = loanTenure * 12;
+    const loanFactor = (Math.pow(1 + r, n) - 1) / (r * Math.pow(1 + r, n));
+
+    const maxEmi        = Math.max(0, afMonthlyIncome * 0.40 - afExistingEMIs);
+    const comfortEmi    = Math.max(0, afMonthlyIncome * 0.30 - afExistingEMIs);
+    const maxLoan       = maxEmi * loanFactor;
+    const comfortLoan   = comfortEmi * loanFactor;
+
+    const dpRate        = downPaymentPct / 100;
+    const maxBudget     = maxLoan / (1 - dpRate);
+    const comfortBudget = comfortLoan / (1 - dpRate);
+
+    const upfrontRate      = dpRate + stampDutyPct / 100 + 0.01;
+    const maxUpfront       = maxBudget * upfrontRate;
+    const comfortUpfront   = comfortBudget * upfrontRate;
+
+    const savingsGap  = Math.max(0, maxUpfront - afCurrentSavings);
+    const savingsFill = Math.min(1, afCurrentSavings / Math.max(maxUpfront, 1));
+
+    let verdict = "NOT_YET";
+    if (afCurrentSavings >= maxUpfront) verdict = "YES";
+    else if (savingsFill >= 0.5)        verdict = "STRETCH";
+
+    const disposable         = Math.max(0, afMonthlyIncome - afExistingEMIs - afCurrentRent);
+    const monthlySavingsRate = disposable * 0.5;
+    const monthsToTarget     = savingsGap > 0 && monthlySavingsRate > 0
+      ? Math.ceil(savingsGap / monthlySavingsRate) : 0;
+
+    const cityTypes  = PROPERTY_TYPES[city] || PROPERTY_TYPES.custom;
+    const bandIdx    = cityTypes.findIndex(b => maxBudget <= b.maxPrice);
+    const matchIndex = bandIdx === -1 ? cityTypes.length - 1 : bandIdx;
+
+    return {
+      maxBudget, comfortBudget,
+      maxEmi, comfortEmi,
+      maxUpfront, comfortUpfront,
+      savingsGap, savingsFill,
+      verdict, monthsToTarget, monthlySavingsRate,
+      matchIndex, cityTypes,
+    };
+  }, [afMonthlyIncome, afExistingEMIs, afCurrentSavings, afCurrentRent,
+      loanRate, loanTenure, downPaymentPct, stampDutyPct, city]);
+
   // ── Copy URL
   const copyURL = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -916,8 +1036,30 @@ export default function RentVsBuyCalculator() {
     setSwitchYear(5);
   };
 
+  const resetAffordability = () => {
+    setAfMonthlyIncome(100000);
+    setAfExistingEMIs(0);
+    setAfCurrentRent(CITIES[city]?.avgRent || 18000);
+    setAfCurrentSavings(0);
+    setDownPaymentPct(20);
+    setLoanRate(8.5);
+    setLoanTenure(20);
+  };
+
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
+  };
+
+  const handleModuleChange = (mod) => {
+    setModule(mod);
+    if (mod === "affordability") setAfActiveTab("income");
+    else setActiveTab("inputs");
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
+  };
+
+  const afHandleTabChange = (tab) => {
+    setAfActiveTab(tab);
     setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
   };
 
@@ -974,7 +1116,7 @@ export default function RentVsBuyCalculator() {
                 boxShadow: "0 0 14px rgba(200,255,50,0.8)",
               }} />
               <span style={{ fontSize: 13, fontFamily: "'Space Mono', monospace", color: "#c8ff32", letterSpacing: "0.15em" }}>
-                HOME BUYING CALCULATOR
+                EVERY HOME DECISION, ONE PLACE
               </span>
             </div>
             <h1 style={{
@@ -983,10 +1125,10 @@ export default function RentVsBuyCalculator() {
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               lineHeight: 1.1, marginBottom: 4,
             }}>
-              Rent vs Buy
+              HomeWise
             </h1>
             <p style={{ fontSize: 13, color: "#555", fontFamily: "'Space Mono', monospace", letterSpacing: "0.03em" }}>
-              India Edition · FY 2025–26 — 80C · 24(b) · HRA · Stamp Duty
+              India Edition · FY 2025–26
             </p>
           </div>
           {/* Copy URL button */}
@@ -1009,33 +1151,65 @@ export default function RentVsBuyCalculator() {
         </div>
       </div>
 
+      {/* ── MODULE SELECTOR ── */}
+      <div style={{ padding: "12px 24px", borderBottom: "1px solid #1e2028", display: "flex", justifyContent: "center" }}>
+        <div style={{
+          display: "inline-flex", background: "#0e1014",
+          borderRadius: 100, padding: 4, border: "1px solid #2a2d35",
+        }}>
+          {[
+            {
+              id: "affordability", label: "Affordability", activeColor: "#13151a", activeBg: "#ffd93d",
+              icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+            },
+            {
+              id: "rvb", label: "Rent vs Buy", activeColor: "#13151a", activeBg: "#c8ff32",
+              icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>,
+            },
+          ].map(m => (
+            <button key={m.id} onClick={() => handleModuleChange(m.id)} style={{
+              padding: "9px 22px", borderRadius: 100, border: "none",
+              background: module === m.id ? m.activeBg : "transparent",
+              color: module === m.id ? m.activeColor : "#555",
+              fontSize: 15, fontWeight: 700, fontFamily: "'DM Sans', sans-serif",
+              cursor: "pointer", transition: "all 0.25s",
+              whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 7,
+            }}>
+              {m.icon}
+              {m.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* ── CITY PILLS ── */}
       <div style={{ padding: "12px 24px", borderBottom: "1px solid #1e2028", display: "flex", alignItems: "center", gap: 10 }}>
         <div style={{ flex: 1, overflowX: "auto", whiteSpace: "nowrap" }}>
         <div style={{ display: "inline-flex", gap: 6 }}>
-          {Object.entries(CITIES).map(([key, c]) => (
-            <button key={key} onClick={() => setCity(key)} style={{
-              padding: "6px 14px", borderRadius: 20,
-              border: `1px solid ${city === key ? "#c8ff32" : "#2a2d35"}`,
-              background: city === key ? "rgba(200,255,50,0.1)" : "transparent",
-              color: city === key ? "#c8ff32" : "#8a8f98",
-              fontSize: 14, fontFamily: "'DM Sans', sans-serif", fontWeight: city === key ? 700 : 500,
-              cursor: "pointer", transition: "all 0.2s", whiteSpace: "nowrap",
-              boxShadow: city === key ? "0 0 10px rgba(200,255,50,0.12)" : "none",
-            }}>
-              {c.name}
-            </button>
-          ))}
+          {Object.entries(CITIES).map(([key, c]) => {
+            const accent = module === "affordability" ? "#ffd93d" : "#c8ff32";
+            const glow   = module === "affordability" ? "255,217,61" : "200,255,50";
+            return (
+              <button key={key} onClick={() => setCity(key)} style={{
+                padding: "6px 14px", borderRadius: 20,
+                border: `1px solid ${city === key ? accent : "#2a2d35"}`,
+                background: city === key ? `rgba(${glow},0.1)` : "transparent",
+                color: city === key ? accent : "#8a8f98",
+                fontSize: 14, fontFamily: "'DM Sans', sans-serif", fontWeight: city === key ? 700 : 500,
+                cursor: "pointer", transition: "all 0.2s", whiteSpace: "nowrap",
+                boxShadow: city === key ? `0 0 10px rgba(${glow},0.12)` : "none",
+              }}>
+                {c.name}
+              </button>
+            );
+          })}
         </div>
         </div>
-        <button onClick={resetToCity} style={{
-          padding: "6px 12px", borderRadius: 20,
-          border: "1px solid #2a2d35",
-          background: "transparent",
-          color: "#8a8f98",
+        <button onClick={module === "rvb" ? resetToCity : resetAffordability} style={{
+          padding: "6px 14px", borderRadius: 20, flexShrink: 0,
+          border: "1px dashed #3a3d45", background: "transparent", color: "#8a8f98",
           fontSize: 14, fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
           cursor: "pointer", transition: "all 0.2s", whiteSpace: "nowrap",
-          flexShrink: 0,
         }}>
           ↺ Reset
         </button>
@@ -1046,22 +1220,41 @@ export default function RentVsBuyCalculator() {
         display: "flex", borderBottom: "1px solid #1e2028",
         position: "sticky", top: 0, zIndex: 100, background: "#13151a",
       }}>
-        {[
-          { id: "inputs",    label: "Inputs"    },
-          { id: "verdict",   label: "Verdict"   },
-          { id: "breakdown", label: "Breakdown" },
-        ].map((tab) => (
-          <button key={tab.id} onClick={() => handleTabChange(tab.id)} style={{
-            flex: 1, padding: "13px 0", border: "none",
-            borderBottom: `2px solid ${activeTab === tab.id ? "#c8ff32" : "transparent"}`,
-            background: "transparent",
-            color: activeTab === tab.id ? "#c8ff32" : "#555",
-            fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
-            cursor: "pointer", transition: "all 0.2s",
-          }}>
-            {tab.label}
-          </button>
-        ))}
+        {module === "rvb" ? (
+          [
+            { id: "inputs",    label: "Your Scenario" },
+            { id: "verdict",   label: "The Verdict"   },
+            { id: "breakdown", label: "Year by Year"  },
+          ].map((tab) => (
+            <button key={tab.id} onClick={() => handleTabChange(tab.id)} style={{
+              flex: 1, padding: "13px 0", border: "none",
+              borderBottom: `2px solid ${activeTab === tab.id ? "#c8ff32" : "transparent"}`,
+              background: "transparent",
+              color: activeTab === tab.id ? "#c8ff32" : "#555",
+              fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
+              cursor: "pointer", transition: "all 0.2s",
+            }}>
+              {tab.label}
+            </button>
+          ))
+        ) : (
+          [
+            { id: "income", label: "Income & Savings" },
+            { id: "budget", label: "Your Budget"      },
+            { id: "buy",    label: "What Can You Buy" },
+          ].map((tab) => (
+            <button key={tab.id} onClick={() => afHandleTabChange(tab.id)} style={{
+              flex: 1, padding: "13px 0", border: "none",
+              borderBottom: `2px solid ${afActiveTab === tab.id ? "#ffd93d" : "transparent"}`,
+              background: "transparent",
+              color: afActiveTab === tab.id ? "#ffd93d" : "#555",
+              fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
+              cursor: "pointer", transition: "all 0.2s",
+            }}>
+              {tab.label}
+            </button>
+          ))
+        )}
       </div>
 
       <div style={{ padding: "20px 24px 60px", maxWidth: 640, margin: "0 auto" }}>
@@ -1069,7 +1262,7 @@ export default function RentVsBuyCalculator() {
         {/* ════════════════════════════
             TAB 1 — INPUTS
         ════════════════════════════ */}
-        {activeTab === "inputs" && (
+        {module === "rvb" && activeTab === "inputs" && (
           <div>
             <Card>
               <SectionLabel>Property &amp; Rent</SectionLabel>
@@ -1272,7 +1465,7 @@ export default function RentVsBuyCalculator() {
         {/* ════════════════════════════
             TAB 2 — VERDICT
         ════════════════════════════ */}
-        {activeTab === "verdict" && (
+        {module === "rvb" && activeTab === "verdict" && (
           <div>
             {/* Hero Card */}
             {(() => {
@@ -1514,7 +1707,7 @@ export default function RentVsBuyCalculator() {
         {/* ════════════════════════════
             TAB 3 — BREAKDOWN
         ════════════════════════════ */}
-        {activeTab === "breakdown" && (
+        {module === "rvb" && activeTab === "breakdown" && (
           <div>
             <Card>
               <SectionLabel>Cumulative Cost Over Time</SectionLabel>
@@ -1632,6 +1825,284 @@ export default function RentVsBuyCalculator() {
                 <div>• Loan uses reducing balance (standard EMI) method</div>
               </div>
             </Card>
+          </div>
+        )}
+
+        {/* ════════════════════════════════════════════
+            AFFORDABILITY — TAB 1: INCOME & SAVINGS
+        ════════════════════════════════════════════ */}
+        {module === "affordability" && afActiveTab === "income" && (
+          <div>
+            <Card>
+              <SectionLabel>Income &amp; Obligations</SectionLabel>
+              <Slider label="Monthly Take-Home Income" value={afMonthlyIncome} onChange={setAfMonthlyIncome}
+                min={30000} max={1000000} step={5000} format={formatINR} color="#ffd93d"
+                tooltip="Your monthly in-hand (post-tax) salary. This is what hits your bank account each month." />
+              <Slider label="Existing EMIs" value={afExistingEMIs} onChange={setAfExistingEMIs}
+                min={0} max={200000} step={1000} format={formatINR} color="#ffd93d"
+                tooltip="Total of all existing loan EMIs you pay today (car, personal loan, etc.). Lenders allow up to 40% of income for all EMIs combined — this is called FOIR." />
+              <Slider label="Current Monthly Rent" value={afCurrentRent} onChange={setAfCurrentRent}
+                min={0} max={150000} step={1000} format={formatINR} color="#ffd93d"
+                tooltip="What you pay as rent right now. After buying, this stops — but your EMI will likely be higher." />
+            </Card>
+
+            <Card>
+              <SectionLabel>Savings Available</SectionLabel>
+              <Slider label="Savings Ready to Deploy" value={afCurrentSavings} onChange={setAfCurrentSavings}
+                min={0} max={10000000} step={50000} format={formatINR} color="#ffd93d"
+                tooltip="Total liquid savings — bank accounts, FDs, liquid funds — that you can use for the down payment and buying costs right now." />
+            </Card>
+
+            <Card>
+              <SectionLabel>Loan Parameters</SectionLabel>
+              <Slider label="Down Payment" value={downPaymentPct} onChange={setDownPaymentPct}
+                min={10} max={50} step={5} suffix="%" tooltip={TOOLTIPS.downPayment} color="#ffd93d" />
+              <Slider label="Loan Tenure" value={loanTenure} onChange={setLoanTenure}
+                min={5} max={30} step={1} suffix=" yrs" tooltip={TOOLTIPS.tenure} color="#ffd93d" />
+              <Slider label="Home Loan Rate" value={loanRate} onChange={setLoanRate}
+                min={6} max={12} step={0.1} suffix="%" color="#ffd93d" />
+            </Card>
+
+            <button onClick={() => afHandleTabChange("budget")} style={{
+              width: "100%", padding: "14px 0", borderRadius: 12, marginTop: 4,
+              background: "linear-gradient(135deg, #ffd93d, #ffb700)",
+              border: "none", color: "#13151a",
+              fontSize: 16, fontWeight: 700, fontFamily: "'DM Sans', sans-serif", cursor: "pointer",
+            }}>
+              See My Budget →
+            </button>
+          </div>
+        )}
+
+        {/* ════════════════════════════════════════════
+            AFFORDABILITY — TAB 2: YOUR BUDGET
+        ════════════════════════════════════════════ */}
+        {module === "affordability" && afActiveTab === "budget" && (
+          <div>
+            {/* Verdict */}
+            <div className="verdict-animate" style={{
+              textAlign: "center", padding: "28px 20px", borderRadius: 16, marginBottom: 20,
+              background: AF.verdict === "YES" ? "rgba(200,255,50,0.06)" : AF.verdict === "STRETCH" ? "rgba(255,217,61,0.06)" : "rgba(255,80,80,0.06)",
+              border: `1px solid ${AF.verdict === "YES" ? "rgba(200,255,50,0.25)" : AF.verdict === "STRETCH" ? "rgba(255,217,61,0.25)" : "rgba(255,80,80,0.25)"}`,
+            }}>
+              <div style={{
+                fontSize: 42, fontWeight: 900, fontFamily: "'Outfit', sans-serif",
+                color: AF.verdict === "YES" ? "#c8ff32" : AF.verdict === "STRETCH" ? "#ffd93d" : "#ff5050",
+              }}>
+                {AF.verdict === "YES" ? "✓ YES" : AF.verdict === "STRETCH" ? "⚡ STRETCH" : "✗ NOT YET"}
+              </div>
+              <div style={{ fontSize: 16, color: "#8a8f98", marginTop: 8 }}>
+                {AF.verdict === "YES"
+                  ? "You have enough saved to buy comfortably."
+                  : AF.verdict === "STRETCH"
+                  ? "You're close — a bit more savings and you're there."
+                  : "You need to build more savings before buying."}
+              </div>
+            </div>
+
+            {/* Budget cards */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
+              <div style={{ background: "#1a1c22", borderRadius: 12, padding: "16px 14px", border: "1px solid #2a2d35" }}>
+                <div style={{ fontSize: 12, color: "#555", marginBottom: 6, fontFamily: "'Space Mono', monospace", letterSpacing: "0.08em" }}>MAX BUDGET</div>
+                <div style={{ fontSize: 22, fontWeight: 700, color: "#e8eaed", fontFamily: "'Space Mono', monospace" }}>{formatINR(AF.maxBudget)}</div>
+                <div style={{ fontSize: 14, color: "#8a8f98", marginTop: 6 }}>EMI ≈ {formatINR(AF.maxEmi)}/mo</div>
+                <div style={{ fontSize: 13, color: "#555", marginTop: 2 }}>40% FOIR</div>
+              </div>
+              <div style={{ background: "#1a1c22", borderRadius: 12, padding: "16px 14px", border: "1px solid #ffd93d33" }}>
+                <div style={{ fontSize: 12, color: "#555", marginBottom: 6, fontFamily: "'Space Mono', monospace", letterSpacing: "0.08em" }}>COMFORTABLE</div>
+                <div style={{ fontSize: 22, fontWeight: 700, color: "#ffd93d", fontFamily: "'Space Mono', monospace" }}>{formatINR(AF.comfortBudget)}</div>
+                <div style={{ fontSize: 14, color: "#8a8f98", marginTop: 6 }}>EMI ≈ {formatINR(AF.comfortEmi)}/mo</div>
+                <div style={{ fontSize: 13, color: "#555", marginTop: 2 }}>30% FOIR</div>
+              </div>
+            </div>
+
+            {/* EMI gauge */}
+            <Card>
+              <SectionLabel>EMI as % of Income</SectionLabel>
+              {[
+                { label: "Max budget EMI", emi: AF.maxEmi, color: AF.maxEmi / afMonthlyIncome > 0.45 ? "#ff5050" : "#c8ff32" },
+                { label: "Comfortable EMI", emi: AF.comfortEmi, color: "#ffd93d" },
+              ].map(({ label, emi, color }) => (
+                <div key={label} style={{ marginBottom: 16 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6, fontSize: 15 }}>
+                    <span style={{ color: "#8a8f98" }}>{label}</span>
+                    <span style={{ color, fontFamily: "'Space Mono', monospace" }}>
+                      {Math.round(emi / afMonthlyIncome * 100)}%
+                    </span>
+                  </div>
+                  <div style={{ height: 8, background: "#1e2028", borderRadius: 4, overflow: "hidden" }}>
+                    <div style={{
+                      height: "100%", borderRadius: 4, background: color, transition: "width 0.5s ease",
+                      width: `${Math.min(100, emi / afMonthlyIncome * 100)}%`,
+                    }} />
+                  </div>
+                </div>
+              ))}
+            </Card>
+
+            {/* Savings readiness */}
+            <Card>
+              <SectionLabel>Savings Readiness</SectionLabel>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15, marginBottom: 8 }}>
+                <span style={{ color: "#8a8f98" }}>You have</span>
+                <span style={{ color: "#e8eaed", fontFamily: "'Space Mono', monospace" }}>{formatINR(afCurrentSavings)}</span>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15, marginBottom: 12 }}>
+                <span style={{ color: "#8a8f98" }}>Needed upfront (DP + stamp duty + reg)</span>
+                <span style={{ color: "#e8eaed", fontFamily: "'Space Mono', monospace" }}>{formatINR(AF.maxUpfront)}</span>
+              </div>
+              <div style={{ height: 8, background: "#1e2028", borderRadius: 4, overflow: "hidden", marginBottom: 10 }}>
+                <div style={{
+                  height: "100%", borderRadius: 4, transition: "width 0.5s ease",
+                  width: `${AF.savingsFill * 100}%`,
+                  background: AF.verdict === "YES" ? "#c8ff32" : AF.verdict === "STRETCH" ? "#ffd93d" : "#ff5050",
+                }} />
+              </div>
+              {AF.savingsGap > 0 && (
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
+                  <span style={{ color: "#ff5050" }}>Gap remaining</span>
+                  <span style={{ color: "#ff5050", fontFamily: "'Space Mono', monospace" }}>−{formatINR(AF.savingsGap)}</span>
+                </div>
+              )}
+            </Card>
+
+            {/* Timeline to readiness */}
+            {AF.verdict !== "YES" && AF.monthsToTarget > 0 && (
+              <Card>
+                <SectionLabel>Timeline to Readiness</SectionLabel>
+                <div style={{ fontSize: 15, color: "#8a8f98", lineHeight: 1.9 }}>
+                  If you save ~<span style={{ color: "#ffd93d", fontWeight: 700 }}>{formatINR(Math.round(AF.monthlySavingsRate))}/month</span> toward your goal, you could be ready in{" "}
+                  <span style={{ color: "#ffd93d", fontWeight: 700 }}>
+                    {AF.monthsToTarget >= 12
+                      ? `${Math.ceil(AF.monthsToTarget / 12)} yr${Math.ceil(AF.monthsToTarget / 12) > 1 ? "s" : ""}`
+                      : `${AF.monthsToTarget} months`}
+                  </span>.
+                </div>
+              </Card>
+            )}
+
+            {/* Monthly impact */}
+            <Card>
+              <SectionLabel>Monthly Cash Flow Impact</SectionLabel>
+              <div style={{ display: "grid", gap: 12 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15 }}>
+                  <span style={{ color: "#8a8f98" }}>Current rent</span>
+                  <span style={{ color: "#e8eaed", fontFamily: "'Space Mono', monospace" }}>−{formatINR(afCurrentRent)}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15 }}>
+                  <span style={{ color: "#8a8f98" }}>Max budget EMI</span>
+                  <span style={{ color: AF.maxEmi > afCurrentRent ? "#ff9966" : "#c8ff32", fontFamily: "'Space Mono', monospace" }}>−{formatINR(AF.maxEmi)}</span>
+                </div>
+                <div style={{ height: 1, background: "#2a2d35" }} />
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15 }}>
+                  <span style={{ color: "#8a8f98" }}>Monthly difference</span>
+                  <span style={{
+                    fontFamily: "'Space Mono', monospace", fontWeight: 700,
+                    color: AF.maxEmi > afCurrentRent ? "#ff5050" : "#c8ff32",
+                  }}>
+                    {AF.maxEmi > afCurrentRent
+                      ? `+${formatINR(AF.maxEmi - afCurrentRent)} more/mo`
+                      : `${formatINR(afCurrentRent - AF.maxEmi)} saved/mo`}
+                  </span>
+                </div>
+              </div>
+            </Card>
+
+            <button onClick={() => afHandleTabChange("buy")} style={{
+              width: "100%", padding: "14px 0", borderRadius: 12, marginTop: 4,
+              background: "linear-gradient(135deg, #ffd93d, #ffb700)",
+              border: "none", color: "#13151a",
+              fontSize: 16, fontWeight: 700, fontFamily: "'DM Sans', sans-serif", cursor: "pointer",
+            }}>
+              What Can I Buy? →
+            </button>
+          </div>
+        )}
+
+        {/* ════════════════════════════════════════════
+            AFFORDABILITY — TAB 3: WHAT CAN YOU BUY
+        ════════════════════════════════════════════ */}
+        {module === "affordability" && afActiveTab === "buy" && (
+          <div>
+            {/* Max budget hero */}
+            <div style={{
+              textAlign: "center", padding: "22px 20px", marginBottom: 24,
+              background: "rgba(255,217,61,0.07)", border: "1px solid rgba(255,217,61,0.25)",
+              borderRadius: 16,
+            }}>
+              <div style={{ fontSize: 13, color: "#8a8f98", marginBottom: 8, fontFamily: "'Space Mono', monospace", letterSpacing: "0.08em" }}>
+                YOUR MAX BUDGET IN {cityName.toUpperCase()}
+              </div>
+              <div style={{
+                fontSize: 40, fontWeight: 900, fontFamily: "'Outfit', sans-serif",
+                color: "#ffd93d", lineHeight: 1,
+              }}>
+                {formatINR(AF.maxBudget)}
+              </div>
+              <div style={{ fontSize: 13, color: "#8a8f98", marginTop: 8 }}>
+                Comfortable: <span style={{ color: "#e8eaed", fontWeight: 600 }}>{formatINR(AF.comfortBudget)}</span>
+              </div>
+            </div>
+
+            {AF.cityTypes.map((band, i) => {
+              const isMatch = i === AF.matchIndex;
+              return (
+                <div key={i} style={{
+                  background: isMatch ? "rgba(255,217,61,0.07)" : "#1a1c22",
+                  border: `1px solid ${isMatch ? "#ffd93d" : "#2a2d35"}`,
+                  borderRadius: 16, padding: "16px 20px", marginBottom: 12,
+                  position: "relative", transition: "all 0.2s",
+                }}>
+                  {isMatch && (
+                    <div style={{
+                      position: "absolute", top: -10, left: 20,
+                      background: "#ffd93d", color: "#13151a",
+                      fontSize: 11, fontWeight: 700, padding: "2px 10px",
+                      borderRadius: 20, fontFamily: "'Space Mono', monospace", letterSpacing: "0.05em",
+                    }}>
+                      YOUR RANGE
+                    </div>
+                  )}
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: isMatch ? "#ffd93d" : "#e8eaed" }}>
+                      {band.type}
+                    </div>
+                    <div style={{
+                      fontSize: 13, fontFamily: "'Space Mono', monospace",
+                      color: isMatch ? "#ffd93d" : "#555",
+                      textAlign: "right", flexShrink: 0, marginLeft: 12,
+                    }}>
+                      {band.label}
+                    </div>
+                  </div>
+                  <div style={{
+                    fontSize: 14, lineHeight: 1.8,
+                    color: isMatch ? "#e8c84a" : "#6a6f7a",
+                    marginBottom: 8,
+                  }}>
+                    {band.locality}
+                  </div>
+                  <div style={{ fontSize: 12, color: "#555" }}>{band.size}</div>
+                </div>
+              );
+            })}
+
+            <button onClick={() => {
+              setPropertyPrice(Math.round(AF.maxBudget / 500000) * 500000);
+              setModule("rvb");
+              setActiveTab("inputs");
+              setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
+            }} style={{
+              width: "100%", padding: "14px 0", borderRadius: 12, marginTop: 8,
+              background: "linear-gradient(135deg, #c8ff32, #a8df20)",
+              border: "none", color: "#13151a",
+              fontSize: 16, fontWeight: 700, fontFamily: "'DM Sans', sans-serif", cursor: "pointer",
+            }}>
+              Compare on Rent vs Buy →
+            </button>
+            <div style={{ textAlign: "center", marginTop: 8, fontSize: 13, color: "#555" }}>
+              Sets your max budget as the property price in Rent vs Buy
+            </div>
           </div>
         )}
       </div>
