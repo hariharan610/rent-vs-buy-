@@ -833,7 +833,7 @@ export default function RentVsBuyCalculator() {
   const [rtbEnabled,      setRtbEnabled]      = useState(false);
   const [switchYear,      setSwitchYear]      = useState(5);
   // Affordability module
-  const [module,           setModule]          = useState("rvb");
+  const [module,           setModule]          = useState("affordability");
   const [afActiveTab,      setAfActiveTab]      = useState("income");
   const [afMonthlyIncome,  setAfMonthlyIncome]  = useState(100000);
   const [afExistingEMIs,   setAfExistingEMIs]   = useState(0);
