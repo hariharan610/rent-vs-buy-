@@ -2115,7 +2115,7 @@ export default function RentVsBuyCalculator() {
       }}>
         <div>For self-occupied residential homes only · FY 2025–26 tax laws · Old tax regime (80C + 24b applicable)</div>
         <div>For informational purposes only — not financial advice. Consult a qualified financial advisor.</div>
-        <div style={{ marginTop: 24, paddingTop: 16, borderTop: "1px solid #1e2028", color: "#666" }}>
+        <div style={{ marginTop: 24, color: "#666" }}>
           Made with ❤️ by{" "}
           <a href="https://www.linkedin.com/in/hariharan-ganesh-s/" target="_blank" rel="noopener noreferrer"
             style={{ color: "#8a8f98", textDecoration: "underline", textUnderlineOffset: 3 }}>
